@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Component } from 'react';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+class App extends Component {
+  state = {
+    movie: 'The Naked Gun',
+    plot: 'Лейтенант Фрэнк Дребин — невероятно неуклюжий и нелепый полицейский детектив. Он расследует покушение на своего напарника, Нордберга. Следы приводят его к бизнесмену Винсенту Людвигу, который планирует убить королеву Великобритании во время её визита в Лос-Анджелес.',
+    actors: [
+      'Лесли Нильсен',
+      'Присцилла Пресли',
+      'Рикардо Монтальбан',
+      'Джордж Кеннеди',
+      'О. Джей Симпсон',
+      'Нэнси Маршан',
+    ],
+    inform: [
+      'Страна: США',
+      'Студия: Paramount Pictures',
+      'Жанр: комедия , детектив ',
+      'Год выпуска: 1988',
+    ],
+    contactInform: [
+      'Адрес: New York 5',
+      'Email: nakedgun@gmail.com',
+      'Телефон: +1 339 225 144',
+    ],
+  };
+  render() {
+    return (
+      <>
+        <div className='card'>
+          <Header movie={this.state.movie} />
+          <Main
+            plot={this.state.plot}
+            actors={this.state.actors}
+            inform={this.state.inform}
+          />
+          <Footer contactInform = {this.state.contactInform}/>
+        </div>
+      </>
+    );
+  }
 }
 
-export default App
+export default App;
